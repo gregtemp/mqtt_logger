@@ -31,7 +31,6 @@ fi
 
 # Get the current directory (where the script is located)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SERVICE_FILE="$SCRIPT_DIR/$SERVICE_NAME"
 
 echo "MQTT Logger Installation Script"
 echo "================================"
@@ -43,12 +42,6 @@ echo ""
 if [ "$EUID" -ne 0 ]; then
     echo "This script needs to be run with sudo privileges."
     echo "Please run: sudo $0 $@"
-    exit 1
-fi
-
-# Check if the service file exists
-if [ ! -f "$SERVICE_FILE" ]; then
-    echo "Error: Service file not found at $SERVICE_FILE"
     exit 1
 fi
 
